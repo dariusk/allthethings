@@ -55,7 +55,7 @@ function getWords() {
           success: function(data) {
             var verb = data.word;
             $("#allthethings").append(verb + " ALL the " + nouns + "<br>");
-            $('#share').attr('href',url+'?word='+encodeStr(verb)+'$'+encodeStr(nouns));
+            $('#share').attr('href',location.href.split('?')[0]+'?word='+encodeStr(verb)+'$'+encodeStr(nouns));
           },
           async: false,
           dataType:"json"
