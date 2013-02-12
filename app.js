@@ -42,7 +42,9 @@ return results[1];
   }
 }
 
-if (gup('word') === "") {
+$('#reload').click(getWords);
+
+function getWords() {
   $.ajax({
     url: 'http://api.wordnik.com/v4/words.json/randomWords?minCorpusCount=10000&minDictionaryCount=5&excludePartOfSpeech=proper-noun,proper-noun-plural,proper-noun-posessive,suffix,family-name,idiom,affix&hasDictionaryDef=true&includePartOfSpeech=noun,adjective,verb&limit=3&maxLength=22&api_key='+key.API_KEY,
     success: function(data) {
@@ -62,12 +64,17 @@ if (gup('word') === "") {
     async: false,
     dataType:"json"
   });
+  return false;
+}
+
+if (gup('word') === "") {
+  getWords();
 }
 else {
   verb = decodeStr(gup('word').split('$')[0]);
   nouns = decodeStr(gup('word').split('$')[1]);
   $('#allthethings').text('');
   $("#allthethings").append(verb + " ALL the " + nouns + "<br>");
-  $('#reload').attr('href',location.href.split("?")[0]);
+  $('#reload').attr('href','');
   $('#share').attr('href',url);
 }
