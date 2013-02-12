@@ -53,7 +53,7 @@ if (gup('word') === "") {
           success: function(data) {
             var verb = data.word;
             $("#allthethings").append(verb + " ALL the " + nouns + "<br>");
-            $('#share').attr('href',url+'?word='+encodeStr(verb)+'@'+encodeStr(nouns));
+            $('#share').attr('href',url+'?word='+encodeStr(verb)+'$'+encodeStr(nouns));
           },
           async: false,
           dataType:"json"
@@ -64,9 +64,9 @@ if (gup('word') === "") {
   });
 }
 else {
-  verb = decodeStr(gup('word').split('@')[0]);
-  nouns = decodeStr(gup('word').split('@')[1]);
+  verb = decodeStr(gup('word').split('$')[0]);
+  nouns = decodeStr(gup('word').split('$')[1]);
   $('#allthethings').text('');
   $("#allthethings").append(verb + " ALL the " + nouns + "<br>");
-  $('#share').attr('href',url+'?word='+encodeStr(verb)+'@'+encodeStr(nouns));
+  $('#share').attr('href',url);
 }
