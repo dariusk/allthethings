@@ -68,5 +68,6 @@ else {
   nouns = decodeStr(gup('word').split('$')[1]);
   $('#allthethings').text('');
   $("#allthethings").append(verb + " ALL the " + nouns + "<br>");
+  $('#reload').attr('href',location.href.split("?")[0]);
   $('#share').attr('href',url);
 }
