@@ -69,12 +69,13 @@ function getWords() {
 
 if (gup('word') === "") {
   getWords();
+  $('.reload').attr('href',location.origin+location.pathname);
 }
 else {
   verb = decodeStr(gup('word').split('$')[0]);
   nouns = decodeStr(gup('word').split('$')[1]);
   $('#allthethings').text('');
   $("#allthethings").append(verb + " ALL the " + nouns + "<br>");
-  $('#reload').attr('href','');
+  $('.reload').attr('href',location.origin+location.pathname);
   $('#share').attr('href',url);
 }
