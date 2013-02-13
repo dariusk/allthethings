@@ -42,7 +42,7 @@ return results[1];
   }
 }
 
-$('#reload').click(getWords);
+$('.reload').click(getWords);
 
 function getWords() {
   $.ajax({
