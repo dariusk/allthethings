@@ -72,8 +72,8 @@ if (gup('word') === "") {
   $('.reload').attr('href',location.origin+location.pathname);
 }
 else {
-  verb = decodeStr(gup('word').split('$')[0]);
-  nouns = decodeStr(gup('word').split('$')[1]);
+  verb = decodeStr(unescape(gup('word')).split('$')[0]);
+  nouns = decodeStr(unescape(gup('word')).split('$')[1]);
   $('#allthethings').text('');
   $("#allthethings").append(verb + " ALL the " + nouns + "<br>");
   $('.reload').attr('href',location.origin+location.pathname);
