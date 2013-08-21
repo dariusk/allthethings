@@ -35,9 +35,9 @@ function decodeStr(coded) {
 
 function gup( name ){
   name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-  var regexS = "[\\?&]"+name+"=([^&#]*)";
+  var regexS = "[#&]"+name+"=([^&]*)";
   var regex = new RegExp( regexS );
-  var results = regex.exec( window.location.href );
+  var results = regex.exec( window.location.hash );
 
   if( results == null ) {
     return "";
@@ -65,19 +65,17 @@ function getWords() {
     nouns = noun_data[0][0].word.pluralize();
     var verb = verb_data[0].word;
     $("#allthethings").append(verb + " ALL the " + nouns + "<br>");
-    $('#share').attr('href',location.href.split('?')[0]+'?word='+encodeStr(verb)+'$'+encodeStr(nouns));
+    window.location.hash = 'word='+encodeStr(verb)+'$'+encodeStr(nouns);
   });
   return false;
 }
 
 if (gup('word') === "") {
   getWords();
-  $('.reload').attr('href',location.origin+location.pathname);
 } else {
   verb = decodeStr(unescape(gup('word')).split('$')[0]);
   nouns = decodeStr(unescape(gup('word')).split('$')[1]);
   $('#allthethings').text('');
   $("#allthethings").append(verb + " ALL the " + nouns + "<br>");
-  $('.reload').attr('href',location.origin+location.pathname);
   $('#share').attr('href',url);
 }
