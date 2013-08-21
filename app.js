@@ -1,5 +1,5 @@
 var sub = "SXGWLZPDOKFIVUHJYTQBNMACERxswgzldpkoifuvjhtybqmncare";
-var nouns = ''; 
+var nouns = '';
 var verb = '';
 var url = location.href;
 
@@ -9,33 +9,33 @@ function encodeStr(uncoded) {
   var chr;
   for (var i = uncoded.length - 1; i >= 0; i--) {
     chr = uncoded.charCodeAt(i);
-    coded += (chr >= 65 && chr <= 90) ? 
+    coded += (chr >= 65 && chr <= 90) ?
       sub.charAt(chr - 65 + 26*Math.floor(Math.random()*2)) :
-      String.fromCharCode(chr); 
+      String.fromCharCode(chr);
     }
-  return encodeURIComponent(coded);  
+  return encodeURIComponent(coded);
 }
 
 function decodeStr(coded) {
-  coded = decodeURIComponent(coded);  
+  coded = decodeURIComponent(coded);
   var uncoded = "";
   var chr;
   for (var i = coded.length - 1; i >= 0; i--) {
     chr = coded.charAt(i);
     uncoded += (chr >= "a" && chr <= "z" || chr >= "A" && chr <= "Z") ?
       String.fromCharCode(65 + 32 + sub.indexOf(chr) % 26) :
-      chr; 
+      chr;
     }
-  return uncoded;   
-} 
+  return uncoded;
+}
 
 function gup( name ){
-  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");  
-  var regexS = "[\\?&]"+name+"=([^&#]*)";  
-  var regex = new RegExp( regexS );  
-  var results = regex.exec( window.location.href ); 
+  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+  var regexS = "[\\?&]"+name+"=([^&#]*)";
+  var regex = new RegExp( regexS );
+  var results = regex.exec( window.location.href );
   if( results == null ) {
-    return "";  
+    return "";
   }
   else {
 return results[1];
