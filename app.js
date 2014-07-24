@@ -56,7 +56,7 @@ function getWords() {
       dataType:"json"
     }),
     $.ajax({
-      url: 'http://api.wordnik.com//v4/words.json/randomWord?excludePartOfSpeech=adjective&hasDictionaryDef=true&includePartOfSpeech=verb-transitive&minCorpusCount=1000&api_key='+key.API_KEY,
+      url: 'http://api.wordnik.com/v4/words.json/randomWord?excludePartOfSpeech=adjective&hasDictionaryDef=true&includePartOfSpeech=verb-transitive&minCorpusCount=1000&api_key='+key.API_KEY,
       async: false,
       dataType:"json"
     })
